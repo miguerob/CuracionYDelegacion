@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!--fonts-->
+    <link href="{{ url_for('static', filename='fonts/fonts.css') }}" rel="stylesheet">
+    <!--fonts-->
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet">
+    <style>
+      .hidden {display: none;}
+    </style>
+  </head>
+
+  <body id="body">
+    <!--header-->
+    <header class="main-header">
+      <div class="notification-wrap">
+        <div class="container">
+          <p>🎉 Gana ~12% APR, De forma pasiva y sin ningún riezgo.</p>
+        </div>
+      </div>
+      <div class="nav-wrap">
+        <div class="container clearfix">
+          <div class="logo-wrap">
+            <a href="#" id="aboutNav"><img src="{{url_for('static', filename='img/logo.png')}}" alt=""></a>
+          </div>
+          <div class="inline-items text-sm-right">
+            <ul>
+              <li class="nav-item loggedIn">
+                <a class="nav-link hidden" id="upvoteNav" href="#">UPVOTE</a>
+              </li>
+              <li class="nav-item loggedIn">
+                <a class="nav-link hidden" id="downvoteNav" href="#">DOWNVOTE</a>
+              </li>
+              <li class="nav-item loggedIn">
+                <a class="nav-link hidden" id="adminNav" href="#">ADMIN</a>
+              </li>
+              <li class="nav-item hidden loggedIn">
+                <a class="nav-link" id="logoutNav" href="#">LOGOUT</a>
+              </li>
+              <li class="nav-item loggedOut">
+                <a class="nav-link" id="loginNav" href="#">LOGIN</a>
+              </li>
+              <li class="nav-item loggedOut">
+                <a class="nav-link" id="registerNav" href="#">REGISTER</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--/header-->
+
+  <div id="content">
+
+    <!--about-->
+    <!--main-->
+    <main id="about" class="page page-content">
+      <!--section-->
+      <section class="content-block support-block">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>¡Apoya <span class="style1">HIVE</span></h1>
+              <h1><span class="style2">Gana</span> intereses!</h1>
+
+              <div class="text-wrap">
+                <p>Nuestro grupo experimentado de curadores internacionales trabajan 
+                  día y noche para apoyar a una gran cantidad de autores en HIVE, 
+                  motivándolos a continuar creando contenido.</p>
+
+                <p>Las recompensas a curaciones por la blockchain genera hasta
+                  un 10% APR para inversionistas. Tu HIVE nunca sale de tu wallet,
+                  y continúa generando otros 2-4% como recompensa. Ese es un total
+                  de ~12% de ganancia al año de manera completamente pasiva, sin ningún
+                  riezgo innecesario.</p>
+              </div>
+
+              <h3>¡Todos ganamos! ¿A qué esperas? <a href="https://discord.gg/WKNXyd" target="_blank"><strong>¡Únetenos!</strong></a></h3>
+              <div class="btn-groups">
+                <form>
+                  <input id="delegateNowUser" name="delegator" class="form-group custom-field" placeholder="HIVE username"/>
+                  <input id="delegateNowAmount" name="delegatex" class="form-group custom-field" placeholder="HP to delegate"/>
+                  <a href="#" id="delegateNow" class="solid-btn">Delegar</a>
+              </form>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="text-center right-col">
+                <h2>Curangel te permite poner tu HIVE a trabajar,
+                  sin que tengas que hacer nada.</h2>
+                <div class="img-wrap">
+                  <img src="{{url_for('static', filename='img/Group 553@2x.png')}}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--./section-->
+      <!--section-->
+      <section class="content-block tab-block">
+          <div class="tab-wrap">
+            <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="mission-tab" data-toggle="tab" href="#mission" role="tab" aria-controls="mission" aria-selected="true">Nuestra Mision</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="delegate-tab" data-toggle="tab" href="#delegatet" role="tab" aria-controls="delegatet" aria-selected="false">¿Porqué delegar con nosotros?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="process-tab" data-toggle="tab" href="#process" role="tab" aria-controls="process" aria-selected="false">¿Cuál es nuestro proceso de curación?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="howinvest-tab" data-toggle="tab" href="#howinvest" role="tab" aria-controls="howinvest" aria-selected="false">¿Cómo invertir?</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                  <p>
+                    Curangel es un servicio de curación que recompensa a curadores y delegadores al tiempo que beneficia a toda la comunidad, creada por el veterano
+                    <a href="http://pharesim.me/" target="_blank">pharesim.</a>
+                  </p>
+                  <p>
+                    Nuestra curación es una combinación de el trabajo duro de curadores manuales y distribución automática de votos.
+                    80% de la recompensa de la curación se le brinda a los delegadores y otro 20% para curadores individuales.
+                    Además de distribuir valor y soporte a creadores de contenido en Hive, las delegaciones son previamente aprovadas para evitar el abuso de spam.
+                  </p>
+              </div>
+              <div class="tab-pane fade" id="delegatet" role="tabpanel" aria-labelledby="delegate-tab">
+                  <p>
+                    Nosotros creemos firmemente que empoderar a los curadores de Hive es la llave para distribuir valor,
+                    proveer autores con exposición y motivación, e incrementar la calidad del contenido publicado en Hive.
+                    Mientras las whitelist funcionan la mayoría de los casos, no son a prueba de abuso.
+                    Con nuestro modelo de curación, curadores se aseguran de que sólo contenido original es apoyado y promovido, a la vez que los casos de abuso con detectados y combatidos
+                    con DOWNVOTES de toda la comunidad de delegadores.</p>
+              </div>
+              <div class="tab-pane fade" id="process" role="tabpanel" aria-labelledby="process-tab">
+                  <p>
+                    Los curadores buscamos a través de una variedad de comunidades y tags en Hive contenido original de autores y lo añadimos a una cola para 
+                    que la cuenta de Curangel vote una vez que alcance un 100% de mana. El peso del voto depende de la longitud de la cola permitiendo que 
+                    un post nunca tome más de 24 horas para ser votado después de ser propuesto.
+                  </p>
+                </div>
+              <div class="tab-pane fade" id="howinvest" role="tabpanel" aria-labelledby="howinvest-tab">
+                  <p>
+                    Para conseguir una cuenta de Hive, selecciona una de las opciones en <a href="https://signup.hive.io/">signup.hive.io</a>
+                  </p>
+                  <p>
+                    Después de crear tu cuenta, encuentrala usando de los buscadores siguientes
+                    (<a href="https://ionomy.com">Ionomy</a>, <a href="https://bittrex.com">Bittrex</a>, <a href="https://www.probit.com">Probit</a>,
+                    <a href="https://huobi.com">Huobi</a>, <a href="https://www.mxc.com">MXC</a>).
+                  </p>
+                  <p>
+                    Como último paso, delega a cruangel usando una wallet o el furmaliro de esta página. Recibirás tu primer recompensa diaria en menos de 48 horas.
+                    Para recordar o modificar tu delegación, simplemente delega 0 o el total de tu nueva delegación. Si tu nueva delegación es menor que la anterior,
+                    tomará 5 días hasta que recivas la diferencia. Para desinvertir, tienes que hacer POWER DOWN, lo que te regresará 1/13vo de tu loquidación cada semana.
+                  </p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--./section-->
+    </main>
+    <!--/main-->
+    <!--/about-->
+
+    <!--downvote-->
+    <main id="downvote" class="hidden page page-content">
+      <section class="content-block support-block"><div class="container">
+      <h1>Downvotes happen twice a day at 11 GMT</h1>
+      <div>
+        <h2>Mark a post or comment for downvote</h2>
+        <p>You can submit as many posts as you want. The weight for a downvote depends on the amount of other submissions and the weight of your delegation.
+        The percentage you select is the absolute maximum the post will go down (except in certain circumstances you can't influence).</p>
+        <form id="downvoteForm">
+          <div class="form-group">
+            <input type="text" id="newDownvote" class="form-control" placeholder="full link to post or comment"/>
+          </div>
+          <div class="form-group">
+            Max downvote
+            <select class="form-control" id="newDownvoteLimit">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="80" selected="selected">80</option>
+              <option value="99">99</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" id="newDownvoteReason" class="form-control" placeholder="reason for downvote" />
+          </div>
+          <button class="btn" id="sendNewDownvote">Send</button>
+          <button class="btn hidden" id="sendingDownvote">Sending...</button>
+        </form>
+      </div>
+      <br />
+      <div class="table-responsive">
+        <h2>History of your downvotes</h2>
+        <table class="table table-hover table-sm" id="downvotesTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>Date</th>
+              <th>Reason</th>
+              <th>User</th>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Payout</th>
+              <th>Limit</th>
+              <th>Status</th>
+              <th>Delete</th>
+          </thead>
+          <tbody id="downvotesTableBody">
+
+          </tbody>
+        </table>
+      </div>
+    </div></section></main>
+    <!--/downvote-->
+
+    <!--upvote-->
+    <main id="upvote" class="hidden page page-content">
+      <section class="content-block support-block"><div class="container">
+      <div>
+        <h2>Suggest a post or comment to upvote</h2>
+        <form id="upvoteForm">
+          <div class="form-group">
+            <input type="text" id="newUpvote" class="form-control" placeholder="full link to post or comment"/>
+          </div>
+          <button class="btn" id="sendNewUpvote">Send</button>
+          <button class="btn hidden" id="sendingUpvote">Sending...</button>
+          <button class="btn" id="checkMana">Check Mana</button>
+        </form>
+      </div>
+      <br />
+      <div class="table-responsive">
+        <h2>History of your suggestions</h2>
+        <table class="table table-hover table-sm" id="upvotesTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>Date</th>
+              <th>User</th>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Payout</th>
+              <th>Status</th>
+              <th>Reward</th>
+              <th>Delete</th>
+          </thead>
+          <tbody id="upvotesTableBody">
+
+          </tbody>
+        </table>
+      </div>
+    </div></section></main>
+    <!--/upvote-->
+
+    <!--admin-->
+    <main id="admin" class="hidden page page-content">
+      <section class="content-block support-block"><div class="container">
+      <h1>Curangel administration interface</h1>
+        <div class="accordion" id="admin-accordion">
+          <div class="card">
+            <div class="card-header" id="admin-accordion-headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#admin-accordion-collapseThree" aria-expanded="true" aria-controls="admin-accordion-collapseThree">
+                  Queue
+                </button>
+              </h2>
+            </div>
+            <div id="admin-accordion-collapseThree" class="collapse" aria-labelledby="admin-accordion-headingThree" data-parent="#admin-accordion">
+              <div class="card-body table-responsive">
+                <table class="table table-hover table-sm" id="adminUpvotesTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Date</th>
+                      <th>Account</th>
+                      <th>User</th>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Delete</th>
+                  </thead>
+                  <tbody id="adminUpvotesTableBody">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="admin-accordion-headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#admin-accordion-collapseOne" aria-expanded="true" aria-controls="admin-accordion-collapseOne">
+                  Users
+                </button>
+              </h2>
+            </div>
+            <div id="admin-accordion-collapseOne" class="collapse" aria-labelledby="admin-accordion-headingOne" data-parent="#admin-accordion">
+              <div class="card-body table-responsive">
+                <table class="table table-hover" id="usersTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Account</th>
+                      <th>Curator</th>
+                      <th>Delegator</th>
+                      <th>Admin</th>
+                      <th>Created</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersTableBody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="admin-accordion-headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#admin-accordion-collapseTwo" aria-expanded="true" aria-controls="admin-accordion-collapseTwo">
+                  Blacklist
+                </button>
+              </h2>
+            </div>
+            <div id="admin-accordion-collapseTwo" class="collapse" aria-labelledby="admin-accordion-headingTwo" data-parent="#admin-accordion">
+              <div class="card-body">
+                <div>
+                  <h2>Add a user to the blacklist</h2>
+                  <form id="blacklistForm">
+                    <div class="form-group">
+                      <input type="text" id="newBlacklist" class="form-control" placeholder="username without @"/>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" id="newBlacklistReason" class="form-control" placeholder="reason for blacklisting" />
+                    </div>
+                    <button class="btn" id="sendNewBlacklist">Send</button>
+                  </form>
+                </div>
+                <br />
+                <div class="table-responsive">
+                  <h2>Blacklist</h2>
+                  <table class="table table-hover table-sm" id="adminBlacklistTable">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>User</th>
+                        <th>Added</th>
+                        <th>Reason</th>
+                        <th>Added by</th>
+                        <th>Delete</th>
+                      </thead>
+                    <tbody id="adminBlacklistTableBody">
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="admin-accordion-headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#admin-accordion-collapseFour" aria-expanded="true" aria-controls="admin-accordion-collapseFour">
+                  Downvotes
+                </button>
+              </h2>
+            </div>
+            <div id="admin-accordion-collapseFour" class="collapse" aria-labelledby="admin-accordion-headingFour" data-parent="#admin-accordion">
+              <div class="card-body table-responsive">
+                <table class="table table-hover table-sm" id="adminDownvotesTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Date</th>
+                      <th>Account</th>
+                      <th>Reason</th>
+                      <th>User</th>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Limit</th>
+                      <th>Status</th>
+                      <th>Delete</th>
+                  </thead>
+                  <tbody id="adminDownvotesTableBody">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div></section></main>
+    <!--/admin-->
+
+    <!--register-->
+    <main id="register" class="hidden page page-content">
+      <section class="content-block support-block"><div class="container">
+      <div id="registerForm">
+        <h1>Register with Curangel<h1>
+        <div class="lead">
+          Registration is only necessary for curators. If you are not one of our curators, there's nothing to see beyond what you can see now.
+          <form id="registerForm">
+            <div class="form-group">
+              <input class="form-control" type="text" id="registerUsername" placeholder="Your Hive username" />
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="password" id="registerPostingKey" placeholder="Your posting key" />
+            </div>
+            <div id="registerError" class="hidden">Registration error</div>
+            <button id="registerNow" class="btn" href="#">Register</button>
+          </form>
+        </div>
+      </div>
+      <div id="registerSuccess" class="hidden">
+        You were successfully registered. As soon as your delegation arrives, you will get access to the downvote form.<br />
+        If you are a curator, tell an admin to give you the proper permissions.<br />
+        You can <a href="#" id="loginFromRegister">Log in now</a>
+      </div>
+    </div></section>
+    </main>
+    <!--/register-->
+
+    <!--loggedout-->
+    <main id="loggedOut" class="hidden page page-content">
+      <section class="content-block support-block"><div class="container">
+      <h1>Welcome to Curangel!<h1>
+      <div class="lead">
+        <form id="loginForm">
+          <div class="form-group">
+            <input class="form-control" type="text" id="loginUsername" placeholder="Your Hive username" />
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" id="loginPostingKey" placeholder="Your posting key" />
+          </div>
+          <div id="loginError" class="hidden">Login error</div>
+          <button id="loginNow" class="btn" href="#">Login</button>
+        </form>
+      </div>
+      </div></section>
+    </main>
+    <!--/loggedout-->
+
+  </div>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
+
+  <script src="{{url_for('static', filename='js/sha256.js')}}"></script>
+
+  <script src="{{url_for('static', filename='js/helpers.js')}}"></script>
+
+  <script src="{{url_for('static', filename='js/loggedout.js')}}"></script>
+  <script src="{{url_for('static', filename='js/about.js')}}"></script>
+  <!-- <script src="js/blacklist.js"></script> -->
+  <script src="{{url_for('static', filename='js/register.js')}}"></script>
+  <script src="{{url_for('static', filename='js/admin.js')}}"></script>
+  <script src="{{url_for('static', filename='js/upvote.js')}}"></script>
+  <script src="{{url_for('static', filename='js/downvote.js')}}"></script>
+  <script src="{{url_for('static', filename='js/app.js')}}"></script>
+  </body>
+  </html>

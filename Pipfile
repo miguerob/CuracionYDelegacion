@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+hivepy = "*"
+rfc3987 = "*"
+pyyaml = "*"
+munch = "*"
+flask = "*"
+autoenv = "==1.0.0"
+sqlalchemy = "*"
+hive = "*"
+steem = "*"
+
+[dev-packages]
+jedi = "*"
+flake8 = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3"

@@ -138,7 +138,7 @@ def admin():
     elif deleteuv:
         post = db.select('upvotes',['status'],{'id':deleteuv},'id')
         if post[0]['status'] == 'in queue':
-            db.update('upvotes',{'status':'removed by '+username},{'id':deleteuv})
+            db.delete('upvotes',{'id':deleteuv})
             data['status'] = 'success'
         else:
             errorHandler.throwError('Only posts in queue can be removed from the queue. Duh!')
@@ -157,7 +157,7 @@ def admin():
     elif deletedv:
         post = db.select('downvotes',['status'],{'id':deletedv},'id')
         if post[0]['status'] == 'wait':
-            db.update('downvotes',{'status':'removed by '+username},{'id':deletedv})
+            db.delete('downvotes',{'id':deletedv})
             data['status'] = 'success'
         else:
             errorHandler.throwError('Only posts that are waiting for a downvote can be removed. Duh!')
@@ -249,7 +249,7 @@ def downvote():
         post = db.select('downvotes',['status'],{'account':username,'id':deletedv},'status')
         if len(results) < 1:
             errorHandler.throwError('Downvote not found!')
-        db.update('downvotes',{'status': 'canceled'},{'id':deletedv})
+        db.delete('downvotes',{'id':deletedv})
         data['status'] = 'success'
     else:
         # submit new post
@@ -347,7 +347,7 @@ def upvote():
         post = db.select('upvotes',['status'],{'account':username,'id':deleteuv},'status')
         if len(results) < 1:
             errorHandler.throwError('Upvote not found!')
-        db.update('upvotes',{'status': 'canceled'},{'id':deleteuv})
+        db.delete('upvotes',{'id':deleteuv})
         data['status'] = 'success'
     else:
         # submit new post

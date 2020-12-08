@@ -10,7 +10,7 @@ document.getElementById('delegateNow').onclick = function() {
   if(delegatex < 1) {
     delegatex = 1;
   }
-  let signat = 'https://hivesigner.com/sign/delegateVestingShares?delegator='+delegator+'&delegatee=criptomonedastv&vesting_shares='+delegatex+'%20HP';
+  let signat = 'https://hivesigner.com/sign/delegateVestingShares?delegator='+delegator+'&delegatee=votame&vesting_shares='+delegatex+'%20HP';
   window.location.href = signat;
 }
 

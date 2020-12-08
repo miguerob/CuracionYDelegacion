@@ -67,8 +67,8 @@ def login():
             user['curator']   = results[0]['curator']
             user['delegator'] = 0
 
-            delegations = client.get_vesting_delegations(username,'criptomonedastv',1)
-            if len(delegations) > 0 and delegations[0]['delegatee'] == 'criptomonedastv':
+            delegations = client.get_vesting_delegations(username,'votame',1)
+            if len(delegations) > 0 and delegations[0]['delegatee'] == 'votame':
                 user['delegator'] = 1
         else:
             errorHandler.throwError('Login failed')
@@ -168,8 +168,8 @@ def admin():
         for row in results:
             user = dict(row)
             user['delegator'] = 0
-            delegations = client.get_vesting_delegations(user['account'],'criptomonedastv',1)
-            if len(delegations) > 0 and delegations[0]['delegatee'] == 'criptomonedastv':
+            delegations = client.get_vesting_delegations(user['account'],'votame',1)
+            if len(delegations) > 0 and delegations[0]['delegatee'] == 'votame':
                 user['delegator'] = 1
             users.append(user)
         data['users'] = users
@@ -236,8 +236,8 @@ def downvote():
     # check permissions
     results = db.select('users',['id'],{'account':username,'hash':userhash},'id')
     delegator = 0
-    delegations = client.get_vesting_delegations(username,'criptomonedastv',1)
-    if len(delegations) > 0 and delegations[0]['delegatee'] == 'criptomonedastv':
+    delegations = client.get_vesting_delegations(username,'votame',1)
+    if len(delegations) > 0 and delegations[0]['delegatee'] == 'votame':
         delegator = 1
     if len(results) < 1 or delegator == 0:
         errorHandler.throwError('No permission')
@@ -278,7 +278,7 @@ def downvote():
 
             # check if already voted
             for vote in post['active_votes']:
-                if vote['voter'] == 'criptomonedastv':
+                if vote['voter'] == 'votame':
                     errorHandler.throwError('We already voted on that post.')
 
             # check if user added that post already
@@ -366,7 +366,7 @@ def upvote():
                 errorHandler.throwError('Curating your own post? Are you serious?')
 
             # check if curator is author himself
-            if post['author'] == 'criptomonedastv':
+            if post['author'] == 'votame':
                 errorHandler.throwError('We do not vote for ourselves :D')
 
             # check if cross post
@@ -389,12 +389,12 @@ def upvote():
             #             db.insert('upvote_notifications',{'id':uuid.uuid4().hex,'user':post['author'],'reason':'bidbot'})
             #             notification = ' User has received a comment.'
             #             permlink = ''.join(random.sample(string.ascii_lowercase, k=10))
-            #             body = "Great work! Your post was selected for curation by one of @criptomonedastv's dedicated curators for its contribution to quality!\n<br />"
+            #             body = "Great work! Your post was selected for curation by one of @votame's dedicated curators for its contribution to quality!\n<br />"
             #             body += "...unfortunately, it had to be excluded from curation because you recently bought a vote from a bid bot ("+h['to']+")."
             #             body += "Authors who participate in vote buying are not eligible for our votes.\n<br />"
             #             body += "But don't worry. It only takes 7 days of not buying votes to be able to receive our vote again, so maybe one of your next posts will make it!\n<br />"
             #             body += "Take care and hive five!"
-            #             client.commit.post('Re: '+post['title'], body, 'criptomonedastv', permlink=permlink, reply_identifier='@'+post['author']+'/'+post['permlink'])
+            #             client.commit.post('Re: '+post['title'], body, 'votame', permlink=permlink, reply_identifier='@'+post['author']+'/'+post['permlink'])
             #         errorHandler.throwError('User has used a bid bot recently. Will not add to queue.'+notification)
             #     last = h['timestamp']
             #     txts = time.mktime(datetime.datetime.strptime(h['timestamp'], "%Y-%m-%dT%H:%M:%S").timetuple())
@@ -413,18 +413,18 @@ def upvote():
                         db.insert('upvote_notifications',{'id':uuid.uuid4().hex,'user':post['author'],'reason':'liquifier'})
                         notification = ' User has received a comment.'
                         permlink = ''.join(random.sample(string.ascii_lowercase, k=10))
-                        body = "Great work! Your post was selected for curation by one of @criptomonedastv's dedicated curators for its contribution to quality!\n<br />"
+                        body = "Great work! Your post was selected for curation by one of @votame's dedicated curators for its contribution to quality!\n<br />"
                         body += "...unfortunately, it had to be excluded from curation because of the use of a service ("+b['account']+") to liquify rewards."
                         body += "Our upvotes are reserved for content which is created with a commitment to long term growth and decentralization of Hive Power.\n<br />"
                         body += "This exclusion only applies to this and eventually other future liquified posts and not all your publications in general. \n<br />"
                         body += "Take care and hive five!"
-                        client.commit.post('Re: '+post['title'], body, 'criptomonedastv', permlink=permlink, reply_identifier='@'+post['author']+'/'+post['permlink'])
+                        client.commit.post('Re: '+post['title'], body, 'votame', permlink=permlink, reply_identifier='@'+post['author']+'/'+post['permlink'])
                     errorHandler.throwError('Post is using a liquifier ('+b['account']+') for rewards. Will not add to queue.'+notification)
 
 
             # check if already voted
             for vote in post['active_votes']:
-                if vote['voter'] == 'criptomonedastv':
+                if vote['voter'] == 'votame':
                     errorHandler.throwError('We already voted on that post.')
 
             # check if post has a lot of rewards already
